@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_margin="2dp"
-    android:background="@color/colorAccent"
+    android:layout_margin="4dp"
+    android:background="@color/colorPrimary"
     android:orientation="horizontal">
     <LinearLayout
         android:layout_height="wrap_content"
@@ -16,9 +16,9 @@
             android:inputType="text|textNoSuggestions"
             android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:textColor="#fff"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:text="USERNAME"/>
         <EditText
             android:id="@+id/email_text_view"
@@ -26,10 +26,10 @@
             android:inputType="text|textNoSuggestions"
             android:layout_marginTop="30dp"
             android:textStyle="bold"
-            android:textColor="#fff"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:text="EMAIL"/>
     </LinearLayout>
     <LinearLayout
@@ -41,21 +41,34 @@
             android:id="@+id/button_to_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="Delete"/>
+            android:layout_gravity="end"
+            android:background="@drawable/ic_baseline_delete"/>
+        <LinearLayout
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed"/>
         <CheckBox
+
             android:id="@+id/complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end">
+            android:layout_gravity="end"/>
+        </LinearLayout>
 
-        </CheckBox>
+
         <Button
             android:id="@+id/button_to_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="25dp"
-            android:text="update"/>
+            android:layout_gravity="end"
+            android:background="@drawable/ic_baseline_pencil" />
     </LinearLayout>
 </LinearLayout>

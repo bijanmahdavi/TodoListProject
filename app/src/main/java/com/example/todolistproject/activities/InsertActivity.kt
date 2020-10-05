@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.todolistproject.R
-import com.example.todolistproject.model.User
+import com.example.todolistproject.model.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_insert.*
@@ -21,9 +21,9 @@ class InsertActivity : AppCompatActivity() {
 
     private fun init() {
         button_insert.setOnClickListener {
-            var email = edit_text_email.text.toString()
-            var name = edit_text_name.text.toString()
-            var user = User(name, email)
+            var title = edit_text_task_description.text.toString()
+            var description = edit_text_task_title.text.toString()
+            var user = Task(description, title)
 
 //            var firebaseDatabase = FirebaseDatabase.getInstance()
 //            var databaseReference = firebaseDatabase.getReference("users")
