@@ -8,16 +8,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolistproject.R
 import com.example.todolistproject.model.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.user_list.view.*
 
 class UserListAdapter(var mContext: Context, var mList: ArrayList<User>) : RecyclerView.Adapter<UserListAdapter.MyViewHolder>() {
 
+    private lateinit var auth: FirebaseAuth
     lateinit var databaseReference: DatabaseReference
     lateinit var keysList: ArrayList<String>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListAdapter.MyViewHolder {
+        auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference(User.COLLECTION_NAME)
         var view = LayoutInflater.from(mContext).inflate(R.layout.user_list, parent, false)
         return MyViewHolder(view)
@@ -45,7 +48,7 @@ class UserListAdapter(var mContext: Context, var mList: ArrayList<User>) : Recyc
 
 
             itemView.button_to_delete.setOnClickListener {
-                var databaseReference = FirebaseDatabase.getInstance().getReference("users")
+                var databaseReference = FirebaseDatabase.getInstance().getReference(auth.currentUser?.uid.toString())
 
                 Log.d("DBR", keysList[position])
                 databaseReference.child(keysList[position]).setValue(null)
@@ -53,9 +56,14 @@ class UserListAdapter(var mContext: Context, var mList: ArrayList<User>) : Recyc
 
             itemView.button_to_update.setOnClickListener {
                 val user = User(itemView.username_text_view.text.toString(),itemView.email_text_view.text.toString())
-                var databaseReference = FirebaseDatabase.getInstance().getReference("users")
+                var databaseReference = FirebaseDatabase.getInstance().getReference(auth.currentUser?.uid.toString())
                 var item = databaseReference.child(keysList[position])
                 item.setValue(user)
+            }
+            itemView.complete.setOnClickListener {
+                if(itemView.complete.isActivated) {
+
+                }
             }
         }
     }

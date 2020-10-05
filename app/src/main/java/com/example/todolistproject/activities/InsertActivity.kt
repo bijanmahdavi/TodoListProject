@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_insert.*
 
 class InsertActivity : AppCompatActivity() {
-    lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class InsertActivity : AppCompatActivity() {
 //            var firebaseDatabase = FirebaseDatabase.getInstance()
 //            var databaseReference = firebaseDatabase.getReference("users")
 
-            var databaseReference = FirebaseDatabase.getInstance().getReference(auth.currentUser?.email.toString().substring(0,4))
+            var databaseReference = FirebaseDatabase.getInstance().getReference(auth.currentUser?.uid.toString())
 
             // insert blank record to generate unique id and save it in local varaible
             var userId = databaseReference.push().key

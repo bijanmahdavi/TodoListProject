@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         //gets an instance of our firebase users
         auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().getReference((auth.currentUser?.email.toString().substring(0,4)))
+        databaseReference = FirebaseDatabase.getInstance().getReference((auth.currentUser?.uid.toString()))
         // checking to see if the user is logged in
         val user = auth.currentUser
         //if not we take them to the register screen first

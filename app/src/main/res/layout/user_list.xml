@@ -43,6 +43,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:text="Delete"/>
+        <CheckBox
+            android:id="@+id/complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+        </CheckBox>
         <Button
             android:id="@+id/button_to_update"
             android:layout_width="wrap_content"
